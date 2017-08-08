@@ -1,0 +1,19 @@
+/* OVERRIDE Master CSS */
+
+div.tabSize {
+    border: 6px solid #B57166 ;/* #831200 ; /*#ED841D ; /*#c4a095;*/
+}
+
+#header {
+	background:#fff;
+	width:inherit;	    
+}
+.fixed {
+	position:fixed;
+	top:0px;
+		    
+}
+#content {
+	width:inherit;
+	// margin-top:120px;
+}

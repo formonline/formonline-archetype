@@ -1,0 +1,63 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version='1.0' encoding='utf-8'?>
+ <Context 
+ 		displayName="${artifactId}" 
+ 		
+ 		className="org.apache.catalina.core.StandardContext" 
+ 		cachingAllowed="true" 
+ 		charsetMapperClass="org.apache.catalina.util.CharsetMapper" 
+ 		cookies="true" 
+ 		crossContext="false" 
+ 		debug="0" 
+ 		mapperClass="org.apache.catalina.core.StandardContextMapper" 
+ 		path="/${artifactId}" 
+ 		privileged="false" 
+ 		reloadable="true" 
+ 		swallowOutput="false" 
+ 		useNaming="true" 
+ 		wrapperClass="org.apache.catalina.core.StandardWrapper">
+<Resource 
+		name="jdbc/${artifactId}" 
+		scope="Shareable" 
+		type="javax.sql.DataSource"
+		driverClassName="org.gjt.mm.mysql.Driver"
+		url="${symbol_dollar}{jdbc.url}"
+		username="${symbol_dollar}{jdbc.username}" 
+		password="${symbol_dollar}{jdbc.password}"
+        maxActive="12" maxIdle="2"
+        maxWait="5000"
+		removeAbandoned="true"
+		removeAbandonedTimeout="30"
+		validationQuery="select version()"
+/>
+
+
+<Parameter name="DataSource" override="false" value="jdbc/${artifactId}" />
+<Parameter name="LogSource"  override="false" value="FOLE" />
+<Parameter name="MailServer" override="false" value="appli-smtp.iledefrance.fr" />
+<Parameter name="MailFrom" override="false"   value="${artifactId}@iledefrance.fr" />
+
+<Parameter name="FileUploadDir" override="false" value="${symbol_dollar}{os.fileUploadDir}" />
+<Parameter name="FileImportDir" override="false" value="${symbol_dollar}{os.fileImportDir}" />
+<Parameter name="FileExportDir" override="false" value="${symbol_dollar}{os.fileExportDir}" />
+<Parameter name="ExportCharset" override="false" value="${symbol_dollar}{exportCharset}" />
+
+<Parameter name="Extensions" override="false" value=".pdf.doc.rtf.txt.docx.docm.odt.ods.xls.xlsx.csv.zip.rar.ppt.pptx.jpg.jpeg.gif.png." />
+
+<Parameter name="XmlRpcAuthorizedUser" override="false" value="${symbol_dollar}{webrpc.user}" />
+<Parameter name="XmlRpcAuthorizedPwd" override="false" value="${symbol_dollar}{webrpc.pwd}" />
+
+<!--  ldap authentification  -->
+<Parameter name="LdapSource" override="false" value="ldap.server.fr" />	
+<Parameter name="LdapPort" override="false" value="389" />
+<Parameter name="LdapBaseDN" override="false" value="DC=CRIDF,DC=iledefrance,DC=fr" />
+<Parameter name="LdapUser" override="false" value="CN=" />	
+<Parameter name="LdapPwd"  override="false" value="" />	
+
+
+<Parameter name="adminPwd" override="false" value="${symbol_dollar}{admin.pwd}" />
+
+</Context>
+		

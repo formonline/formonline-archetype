@@ -1,0 +1,287 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	      version="3.0"
+	      >
+	<display-name>${artifactId}</display-name>
+	
+	
+	<context-param>
+			<param-name>version</param-name>
+			<param-value>${symbol_dollar}{project.version}-${symbol_dollar}{profile.warsuffix}</param-value>
+		</context-param>
+		<context-param>
+     		<param-name>DataSource</param-name>
+     		<param-value>jdbc/${artifactId}</param-value>
+      	</context-param>
+
+    	<context-param>
+     		<param-name>LogSource</param-name>
+      		<param-value>FOLE</param-value>
+    	</context-param>
+    	
+    	<context-param>
+			<param-name>MailServer</param-name>
+			<param-value>my-smtp.my-server.fr</param-value>
+		</context-param>
+		<context-param>
+			<param-name>MailFrom</param-name>
+			<param-value>me@home.fr</param-value>
+		</context-param>
+		<context-param>
+			<param-name>XmlRpcAuthorizedUser</param-name>
+			<param-value>test</param-value>
+		</context-param>
+		<context-param>
+			<param-name>XmlRpcAuthorizedPwd</param-name>
+			<param-value>test</param-value>
+		</context-param>
+		
+		<context-param>
+			<param-name>FileUploadDir</param-name>
+			 <!-- param-value>/var/ext-rh/</param-value -->  
+			<param-value>D:${symbol_escape}TMP${symbol_escape}FileUploadDir</param-value>
+		</context-param>
+
+		<context-param>
+			<param-name>FileImportDir</param-name>
+			<param-value>D:${symbol_escape}TMP${symbol_escape}FILES</param-value>
+		</context-param>
+
+		<context-param>
+			<param-name>LdapSource</param-name>
+			<param-value>ldap.server.fr</param-value>
+		</context-param>
+		<context-param>
+			<param-name>LdapPort</param-name>
+			<param-value>389</param-value>
+		</context-param>
+		<context-param>
+			<param-name>LdapBaseDN</param-name>
+			<param-value>DC=</param-value>
+		</context-param>
+		<context-param>
+			<param-name>LdapUser</param-name>
+			<param-value>CN=</param-value>
+		</context-param>
+		<context-param>
+			<param-name>LdapPwd</param-name>
+			<param-value>...</param-value>
+		</context-param>
+
+		<context-param>
+			<param-name>ExportCharset</param-name>
+			<param-value>ISO-8859-1</param-value>
+		</context-param>
+		
+		<context-param>
+			<param-name>adminPwd</param-name>
+			<param-value>...</param-value>
+		</context-param>
+	
+	<servlet>
+		<servlet-name>ServControl</servlet-name>
+		<servlet-class>formOnLine.ServControl</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>ServQuest</servlet-name>
+		<servlet-class>formOnLine.ServQuest</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServRep</servlet-name>
+		<servlet-class>formOnLine.ServRep</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServImport</servlet-name>
+		<servlet-class>formOnLine.ServImport</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetJson</servlet-name>
+		<servlet-class>formOnLine.io.GetJson</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServAdmMaj</servlet-name>
+		<servlet-class>formOnLine.ServAdmMaj</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>XmlAjaxControl</servlet-name>
+		<servlet-class>formOnLine.XmlAjaxControl</servlet-class>
+	</servlet>
+		<servlet>
+		<servlet-name>ServStat</servlet-name>
+		<servlet-class>formOnLine.ServStat</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServLogin</servlet-name>
+		<servlet-class>formOnLine.ServLogin</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServListQuest</servlet-name>
+		<servlet-class>formOnLine.ServListQuest</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServListRep</servlet-name>
+		<servlet-class>formOnLine.ServListRep</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServExport</servlet-name>
+		<servlet-class>formOnLine.ServExport</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServGetFile</servlet-name>
+		<servlet-class>formOnLine.ServGetFile</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ServTemplateMaj</servlet-name>
+		<servlet-class>formOnLine.ServTemplateMaj</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ServConfigMaj</servlet-name>
+		<servlet-class>formOnLine.ServConfigMaj</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>ServExportRPC</servlet-name>
+		<servlet-class>formOnLine.ServExportRPC</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServLock</servlet-name>
+		<servlet-class>formOnLine.ServLock</servlet-class>
+	</servlet>
+		
+	<servlet>
+		<servlet-name>Captcha</servlet-name>
+		<servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ServMailPwd</servlet-name>
+		<servlet-class>formOnLine.ServMailPwd</servlet-class>
+	</servlet>
+	
+	<servlet>
+	    <servlet-name>init</servlet-name>
+	    <servlet-class>formOnLine.InitServlet</servlet-class>
+    	    	<load-on-startup>1</load-on-startup>
+ 	</servlet>
+ 	
+ 	<servlet>
+        <servlet-name>MyXmlRpcServlet</servlet-name>
+        <servlet-class>formOnLine.io.MyXmlRpcServlet</servlet-class>
+        <init-param>
+          <param-name>enabledForExtensions</param-name>
+          <param-value>true</param-value>
+        </init-param>
+    </servlet>
+
+ 	<!--  ************ MAPPING ************* -->
+	<servlet-mapping>
+		<servlet-name>ServControl</servlet-name>
+		<url-pattern>/ServControl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServQuest</servlet-name>
+		<url-pattern>/ServQuest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServAdmMaj</servlet-name>
+		<url-pattern>/ServAdmMaj</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServRep</servlet-name>
+		<url-pattern>/ServRep</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServLogin</servlet-name>
+		<url-pattern>/ServLogin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServGetFile</servlet-name>
+		<url-pattern>/getFile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServGetFile</servlet-name>
+		<url-pattern>/ServGetFile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServListQuest</servlet-name>
+		<url-pattern>/ServListQuest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServListRep</servlet-name>
+		<url-pattern>/ServListRep</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServTemplateMaj</servlet-name>
+		<url-pattern>/ServTemplateMaj</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>XmlAjaxControl</servlet-name>
+		<url-pattern>/XmlAjaxControl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetJson</servlet-name>
+		<url-pattern>/GetJson</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServImport</servlet-name>
+		<url-pattern>/ServImport</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServExport</servlet-name>
+		<url-pattern>/ServExport</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServStat</servlet-name>
+		<url-pattern>/ServStat</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServConfigMaj</servlet-name>
+		<url-pattern>/ServConfigMaj</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServExportRPC</servlet-name>
+		<url-pattern>/ServExportRPC</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>Captcha</servlet-name>
+		<url-pattern>/Captcha</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServMailPwd</servlet-name>
+		<url-pattern>/ServMailPwd</url-pattern>
+	</servlet-mapping>
+	
+	    <servlet-mapping>
+        <servlet-name>MyXmlRpcServlet</servlet-name>
+        <url-pattern>/xmlrpc</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>ServLock</servlet-name>
+		<url-pattern>/ServLock</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file> 
+		<welcome-file>ServControl</welcome-file> 
+	</welcome-file-list>
+	
+	<jsp-config>
+	    <jsp-property-group>
+	        <url-pattern>*.jsp</url-pattern>
+	        <page-encoding>UTF-8</page-encoding>
+	    </jsp-property-group>
+	</jsp-config>
+	
+
+</web-app>
